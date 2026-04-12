@@ -18,11 +18,12 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 
 public class ItemLoader {
+	public static final MultiItem item = new MultiItem();
 	public static void loadItems() {
 		OreDictMaterial[] m = new OreDictMaterial[] {};
 		final gregapi.oredict.OreDictPrefix fluxCrystal = OreDictPrefix.createPrefix("fluxCrystal").setCategoryName("Fluid Crystal").setLocalPrefixName("Flux Crystal").setLocalItemName("", "Flux Crystal").setMaterialStats(2*U).setStacksize(64);
 		PrefixItem crystal = new gregapi.item.prefixitem.PrefixItem("vd_core", "vd_core", "vd_core.item.fluxCrystal", fluxCrystal, Utils.fluxCrystalMaterials.toArray(m));
-		MultiItem item = new MultiItem();
+		
 		loadMultiItem();
 		GameRegistry.registerItem(item, "multiitem");
 	}

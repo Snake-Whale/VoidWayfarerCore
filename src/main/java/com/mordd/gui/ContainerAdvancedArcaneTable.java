@@ -30,20 +30,40 @@ public class ContainerAdvancedArcaneTable extends Container{
 	public IArcaneRecipe recipe;
 	public int visBar[] = new int[6];
 	public int required[] = new int[6];
+	@Override
+	public ItemStack slotClick(int a,int b,int c,EntityPlayer player) { 
+		try {
+			VoidDwellerCore.logger.fatal(player.openContainer.getClass().getCanonicalName());
+			System.out.println(this.inventorySlots.size());
+			player.inventory.getItemStack();
+			return super.slotClick(a, b, c, player);
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public ContainerAdvancedArcaneTable(EntityPlayer player,TileEntityAdvancedArcaneTable tile) {
+		
 		this.player = player;
 		this.tile = tile;
 		this.tile.setHandler(this);
 		for(int i = 0;i < 6;i++) visBar[i] = 0;
+		
         for (int i = 0; i < 5; i++)
         {
         	for(int j = 0;j < 4;j++) {
         		this.addSlotToContainer(new Slot(tile, i * 4 + j, 12 + 18 * j, 26 + 18 * i));
+        		System.out.println(this.inventorySlots.size());
         	}
         }
         for(int i = 0;i < 3;i++) {
         	for(int j = 0;j < 3;j++) {
         		this.addSlotToContainer(new Slot(tile, i * 3 + j + 20, 87 + 18 * j, 62 + 18 * i));
+        		System.out.println(this.inventorySlots.size());
         	}
         }
         this.addSlotToContainer(new Slot(tile, 29, 174, 79) {
@@ -64,6 +84,7 @@ public class ContainerAdvancedArcaneTable extends Container{
 				 ContainerAdvancedArcaneTable.this.onCraftMatrixChanged(this.inventory);
 			 }
 		});
+        System.out.println(this.inventorySlots.size());
         this.addSlotToContainer(new Slot(tile, 30, 210, 6) {
         	@Override
 	        public boolean isItemValid(ItemStack stack)
@@ -71,12 +92,15 @@ public class ContainerAdvancedArcaneTable extends Container{
 	            return ContainerAdvancedArcaneTable.this.tile.isItemValidForSlot(30, stack);
 	        }
         });
+        System.out.println(this.inventorySlots.size());
         for(int i = 0;i < 9;i++) {
         	this.addSlotToContainer(new Slot(player.inventory, i, 12 + 18 * i, 180));
+        	System.out.println(this.inventorySlots.size());
         }
         for(int i = 0;i < 3;i++) {
         	for(int j = 0;j < 9;j++) {
         		this.addSlotToContainer(new Slot(player.inventory, i * 9 + j + 9, 12 + 18 * j, 123 + 18 * i));
+        		System.out.println(this.inventorySlots.size());
         	}
         }
 		this.onCraftMatrixChanged(this.tile);

@@ -24,7 +24,6 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS;
 import gregapi.data.MT;
 import gregapi.data.CS.ItemsGT;
-import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
@@ -55,7 +54,7 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 	/** This is your Mods Name */
 	public static final String MOD_NAME = "Void Dweller Core"; // <-- TODO: you need to change this to the Name of your own Mod, and then remove this Comment after you did that.
 	/** This is your Mods Version */
-	public static final String VERSION = "0.2.0_011c";
+	public static final String VERSION = "0.2.0_011e";
 	/** Contains a ModData Object for ID and Name. Doesn't have to be changed. */
 	public static gregapi.code.ModData MOD_DATA = new gregapi.code.ModData(MOD_ID, MOD_NAME);
 	
@@ -86,6 +85,10 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 	
 	@Override
 	public void onModPreInit2(cpw.mods.fml.common.event.FMLPreInitializationEvent event) {
+		final gregapi.oredict.OreDictMaterial dummy = gregapi.oredict.OreDictMaterial.createMaterial(32765, "dummy_stone", "dummy_stone");
+		dummy.setTextures(gregapi.render.TextureSet.SET_METALLIC);
+		dummy.setRGBa(200, 200, 200, 0);
+		
 		new MultiTileEntityRegistry("vd.multitileentity");
 		
 		new ConfigLoader(event);

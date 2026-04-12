@@ -83,16 +83,14 @@ public class MultiBlock extends Block {
 	}
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 		int meta = this.getActualMeta(world, x, y, z);
-		
-		
-		
+
 		if(meta == 0) {
 			Block block = world.getBlock(x, y - 1, z);
 			ItemStack generate = null;
 			if(Block.isEqualTo(block, this)) {
 				int meta2 = this.getActualMeta(world, x, y - 1, z);
 				if(Utils.rc_recipe.containsKey(meta2)) {
-					generate = Utils.rc_recipe.get(meta2);
+					generate = Utils.rc_recipe.get(new ItemStack(this,1,meta2));
 				}
 			}
 			else if(Block.isEqualTo(block, Blocks.stonebrick)) {
@@ -180,12 +178,8 @@ public class MultiBlock extends Block {
 									}
 									
 									break;
-								}
-								
-								
-							}
-							
-							
+								}	
+							}					
 						}
 				}
 			}
