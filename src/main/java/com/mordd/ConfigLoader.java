@@ -72,5 +72,6 @@ public class ConfigLoader {
 				continue;
 			}
 		}
+		config.save();
 	}
 }

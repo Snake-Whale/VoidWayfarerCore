@@ -51,35 +51,5 @@ public class MultiItem extends Item {
 			icons.put(meta,icon);
 		}
 	}
-	@Override
-	 public boolean onItemUseFirst(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ)
-    {
-        if(stack.getItemDamage() == 0) {   	
-        	TileEntity tile = world.getTileEntity(x, y, z);
-        	if(tile != null && tile instanceof MultiTileEntityBedrockDrill) {
-        		MultiTileEntityBedrockDrill drill = (MultiTileEntityBedrockDrill)tile;
-        		drill.mStructureOkay = true;
-        		 Class c = tile.getClass();
-        		 try {
-					Field f = c.getField("mOnlyStructureOkay");
-					boolean out = (Boolean) f.get(tile);
-					VoidDwellerCore.logger.fatal(out ? "Okay" : "Not Okay");
-				} catch (NoSuchFieldException e) {
-					e.printStackTrace();
-				} catch (SecurityException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-        	}
-        	return false;
-        }
-        return false;
-    }
-	
 	
 }

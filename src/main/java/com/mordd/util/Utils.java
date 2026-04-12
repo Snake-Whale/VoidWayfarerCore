@@ -19,6 +19,7 @@ import gregapi.oredict.OreDictItemData;
 import gregapi.oredict.OreDictManager;
 import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictMaterialStack;
+import gregapi.render.TextureSet;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -88,7 +89,7 @@ public class Utils {
 	/**
 	 *  Register a New Material
 	 */
-	public static OreDictMaterial registerMaterial(String aNameOreDict, String aLocalName,int MeltingPoint,int BoilingPoint, int PlasmaPoint, double density, int color_ARGB) {
+	public static OreDictMaterial registerMaterial(String aNameOreDict, String aLocalName,int MeltingPoint,int BoilingPoint, int PlasmaPoint, double density, int color_ARGB,TextureSet... aSets) {
 		if(currentId > 32760) throw new IndexOutOfBoundsException("You can only register at most 760 materials for Modpack use!");
 		OreDictMaterial ret = OreDictMaterial.createMaterial(currentId, aNameOreDict, aLocalName);
 		ret.heat(MeltingPoint, BoilingPoint, PlasmaPoint);
@@ -98,10 +99,24 @@ public class Utils {
 		int G = (color_ARGB & 0xFF00) >> 8;
 		int B = color_ARGB & 0xFF;
 		ret.setRGBa(R, G, B, A);
+		ret.setTextures(TextureSet.SET_METALLIC);
 		currentId++;
 		return ret;
 	}
-	
+	public static OreDictMaterial registerMaterial(String aNameOreDict, String aLocalName,int MeltingPoint,int BoilingPoint, double density, int color_ARGB,TextureSet... aSets) {
+		if(currentId > 32760) throw new IndexOutOfBoundsException("You can only register at most 760 materials for Modpack use!");
+		OreDictMaterial ret = OreDictMaterial.createMaterial(currentId, aNameOreDict, aLocalName);
+		ret.heat(MeltingPoint, BoilingPoint);
+		ret.setDensity(density / 111.111111);
+		int A = (color_ARGB & 0xFF000000) >> 24;
+		int R = (color_ARGB & 0xFF0000) >> 16;
+		int G = (color_ARGB & 0xFF00) >> 8;
+		int B = color_ARGB & 0xFF;
+		ret.setRGBa(R, G, B, A);
+		ret.setTextures(TextureSet.SET_METALLIC);
+		currentId++;
+		return ret;
+	}
 	
 	
 	public static boolean isTCLoaded() {
