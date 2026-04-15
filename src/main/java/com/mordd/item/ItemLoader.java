@@ -18,14 +18,16 @@ import gregapi.oredict.OreDictMaterial;
 import gregapi.oredict.OreDictPrefix;
 
 public class ItemLoader {
-	public static final MultiItem item = new MultiItem();
 	public static void loadItems() {
 		OreDictMaterial[] m = new OreDictMaterial[] {};
 		final gregapi.oredict.OreDictPrefix fluxCrystal = OreDictPrefix.createPrefix("fluxCrystal").setCategoryName("Fluid Crystal").setLocalPrefixName("Flux Crystal").setLocalItemName("", "Flux Crystal").setMaterialStats(2*U).setStacksize(64);
 		PrefixItem crystal = new gregapi.item.prefixitem.PrefixItem("vd_core", "vd_core", "vd_core.item.fluxCrystal", fluxCrystal, Utils.fluxCrystalMaterials.toArray(m));
-		
+		MultiItem item = new MultiItem();
 		loadMultiItem();
 		GameRegistry.registerItem(item, "multiitem");
+
+		ToolCeramicBucket ceramicBucket = new ToolCeramicBucket("vd_core", "vd_core.ceramic_bucket");
+		ceramicBucket.addItems();
 	}
 	public static void loadMultiItem() {
 		MultiItem.registerMultiItem(0,"clay_powder");
@@ -33,7 +35,7 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(2,"carbon_mud");
 		MultiItem.registerMultiItem(3,"fertilizer");
 		MultiItem.registerMultiItem(4,"potassiumAmmoniumHydrogenPhosphate");
-		MultiItem.registerMultiItem(5,"bone_in_bottle");
+		MultiItem.registerMultiItem(5,"clay_bucket");
 		MultiItem.registerMultiItem(6,"singleUseCrushHammer");
 		MultiItem.registerMultiItem(7,"magnesiumOxide");
 		MultiItem.registerMultiItem(8,"eternity_crystal");
@@ -56,5 +58,13 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(27,"crushed_flux_coagulum_andesite");
 		MultiItem.registerMultiItem(28,"crushed_flux_coagulum_granite_red");
 		MultiItem.registerMultiItem(29,"crushed_flux_coagulum_granite_black");
+		MultiItem.registerMultiItem(30,"roastedPlatinumGroupSludge");
+		MultiItem.registerMultiItem(31,"rareMetalResidue");
+		MultiItem.registerMultiItem(32,"iridiumDioxide");
+		MultiItem.registerMultiItem(33,"osmiumTetroxide");
+		MultiItem.registerMultiItem(34,"zirconAlkaliCalcine");
+		MultiItem.registerMultiItem(35,"hafniumRichZirconia");
+		MultiItem.registerMultiItem(36,"zirconiumTetrachloride");
+		MultiItem.registerMultiItem(37,"hafniumTetrachloride");
 	}
 }

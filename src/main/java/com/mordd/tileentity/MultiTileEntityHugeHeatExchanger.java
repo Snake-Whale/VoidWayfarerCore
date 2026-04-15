@@ -93,6 +93,7 @@ public class MultiTileEntityHugeHeatExchanger extends MultiTileEntityLargeHeatEx
 			if(this.mTanks[0].amount() > this.mTanks[0].capacity() / 2) {
 				this.mRate = outputBase * 2;
 			}
+			else this.mRate = outputBase;
 		}
 		else this.mRate = outputBase;
 		super.onTick2(aTimer, aIsServerSide);

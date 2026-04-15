@@ -24,6 +24,7 @@ import gregapi.block.multitileentity.MultiTileEntityRegistry;
 import gregapi.data.CS;
 import gregapi.data.MT;
 import gregapi.data.CS.ItemsGT;
+import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
@@ -54,7 +55,7 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 	/** This is your Mods Name */
 	public static final String MOD_NAME = "Void Dweller Core"; // <-- TODO: you need to change this to the Name of your own Mod, and then remove this Comment after you did that.
 	/** This is your Mods Version */
-	public static final String VERSION = "0.2.1_011f";
+	public static final String VERSION = "0.2.0_011c";
 	/** Contains a ModData Object for ID and Name. Doesn't have to be changed. */
 	public static gregapi.code.ModData MOD_DATA = new gregapi.code.ModData(MOD_ID, MOD_NAME);
 	
@@ -85,8 +86,6 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 	
 	@Override
 	public void onModPreInit2(cpw.mods.fml.common.event.FMLPreInitializationEvent event) {
-
-		
 		new MultiTileEntityRegistry("vd.multitileentity");
 		
 		new ConfigLoader(event);
@@ -111,10 +110,12 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 	@Override
 	public void onModPostInit2(cpw.mods.fml.common.event.FMLPostInitializationEvent aEvent) {
 		// Insert your PostInit Code here and not above
-		Utils.clearMaterial(new ItemStack(ItemsGT.TOOLS,1,2000));
-		Utils.addMaterial(new ItemStack(ItemsGT.TOOLS,1,2000),MT.Ceramic,3*CS.U);
 		Item tile = GameRegistry.findItem("gregtech", "gt.multitileentity");
-		Utils.replaceMaterial(new ItemStack(tile,1,1039),MT.Ir,MT.NetherStar,1*CS.U);
+		//Modified
+		//Utils.replaceMaterial(new ItemStack(tile,1,1039),MT.Ir,MT.NetherStar,1*CS.U);
+		Utils.clearMaterial(new ItemStack(tile,1,1039));
+		Utils.addMaterial(new ItemStack(tile,1,1039),MT.Ir,7*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,1039),MT.NetherStar,1*CS.U);
 	}
 	
 	@Override

@@ -22,12 +22,11 @@ public class GuiContainerAdvancedArcaneTable extends GuiContainer {
 		this.xSize = 232;
         this.ySize = 208;
         this.container = container;
-        
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-	
+		
 		 this.mc.getTextureManager().bindTexture(TEXTURE);
 	     int offsetX = (this.width - this.xSize) / 2, offsetY = (this.height - this.ySize) / 2;
 	     this.drawTexturedModalRect(offsetX, offsetY, 0, 0, this.xSize, this.ySize);

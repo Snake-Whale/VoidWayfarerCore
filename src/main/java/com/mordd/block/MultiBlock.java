@@ -50,7 +50,8 @@ public class MultiBlock extends Block {
 	}
 	public static HashMap<Integer,String> registeredBlock = new HashMap<Integer,String>();
 
-	public static HashMap<Integer,IIcon> icons = new HashMap<Integer,IIcon>(); 
+	//public static HashMap<Integer,IIcon> icons = new HashMap<Integer,IIcon>();
+	public static HashMap<Integer, IIcon[]> icons = new HashMap<Integer, IIcon[]>();
 	public static HashMap<Integer,Float> hardness = new HashMap<Integer,Float>(); 
 	public static void registerMultiBlock(int meta,String name) {
 		registeredBlock.put(meta, name);
@@ -83,14 +84,16 @@ public class MultiBlock extends Block {
 	}
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 		int meta = this.getActualMeta(world, x, y, z);
-
+		
+		
+		
 		if(meta == 0) {
 			Block block = world.getBlock(x, y - 1, z);
 			ItemStack generate = null;
 			if(Block.isEqualTo(block, this)) {
 				int meta2 = this.getActualMeta(world, x, y - 1, z);
 				if(Utils.rc_recipe.containsKey(meta2)) {
-					generate = Utils.rc_recipe.get(new ItemStack(this,1,meta2));
+					generate = Utils.rc_recipe.get(meta2);
 				}
 			}
 			else if(Block.isEqualTo(block, Blocks.stonebrick)) {
@@ -178,8 +181,12 @@ public class MultiBlock extends Block {
 									}
 									
 									break;
-								}	
-							}					
+								}
+								
+								
+							}
+							
+							
 						}
 				}
 			}
@@ -254,8 +261,27 @@ public class MultiBlock extends Block {
 		
 		Set<Integer> keys = registeredBlock.keySet();
 		for(int meta : keys) {
-			IIcon icon = register.registerIcon("vd_core:"+registeredBlock.get(meta));
-			icons.put(meta, icon);
+			//IIcon icon = register.registerIcon("vd_core:"+registeredBlock.get(meta));
+			//icons.put(meta, icon);
+			String baseName = registeredBlock.get(meta);
+			IIcon[] sideIcons = new IIcon[6];
+
+			if (meta == 0) {
+				sideIcons[0] = register.registerIcon("vd_core:" + baseName + "_down");
+				sideIcons[1] = register.registerIcon("vd_core:" + baseName + "_up");
+				sideIcons[2] = register.registerIcon("vd_core:" + baseName + "_north");
+				sideIcons[3] = register.registerIcon("vd_core:" + baseName + "_south");
+				sideIcons[4] = register.registerIcon("vd_core:" + baseName + "_west");
+				sideIcons[5] = register.registerIcon("vd_core:" + baseName + "_east");
+			}else{
+				sideIcons[0] = register.registerIcon("vd_core:" + baseName);
+				sideIcons[1] = register.registerIcon("vd_core:" + baseName);
+				sideIcons[2] = register.registerIcon("vd_core:" + baseName);
+				sideIcons[3] = register.registerIcon("vd_core:" + baseName);
+				sideIcons[4] = register.registerIcon("vd_core:" + baseName);
+				sideIcons[5] = register.registerIcon("vd_core:" + baseName);
+			}
+			icons.put(meta, sideIcons);
 		}
 	}
 	@Override
@@ -274,14 +300,20 @@ public class MultiBlock extends Block {
 			TileEntityMultiBlock tile2 = (TileEntityMultiBlock)tile;
 			meta = tile2.meta;
 		}
-		return icons.get(meta);
+		//return icons.get(meta);
+		IIcon[] arr = icons.get(meta);
+		return arr != null ? arr[side] : Blocks.stone.getIcon(side, 0);
 	}
 	@Override
 	public IIcon getIcon(int side,int meta) {
-		return icons.get(meta);
+		//return icons.get(meta);
+		IIcon[] arr = icons.get(meta);
+		return arr != null ? arr[side] : Blocks.stone.getIcon(0, 0);
 	}
 	public static IIcon getIcon(int meta) {
-		return icons.get(meta);
+		//return icons.get(meta);
+		IIcon[] arr = icons.get(meta);
+		return arr != null ? arr[1] : Blocks.stone.getIcon(0, 0);
 	}
 	@Override
 	public boolean hasTileEntity(int metadata) {

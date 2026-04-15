@@ -7,6 +7,5 @@ public class TileEntityLoader {
 		 GameRegistry.registerTileEntity(TileEntityFluidSource.class,"tile.mordd.watersource");
 		 GameRegistry.registerTileEntity(TileEntityAdvancedArcaneTable.class,"tile.mordd.advanced_arcan_table");
 		 GameRegistry.registerTileEntity(TileEntityMultiBlock.class,"tile.mordd.multiblock");
-		 
 	}
 }

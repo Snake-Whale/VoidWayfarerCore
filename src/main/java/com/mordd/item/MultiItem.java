@@ -1,22 +1,15 @@
-package com.mordd.item; 
+package com.mordd.item;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 
-import com.mordd.VoidDwellerCore;
 import com.mordd.block.MultiBlock;
 
-import gregtech.tileentity.multiblocks.MultiTileEntityBedrockDrill;
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
 public class MultiItem extends Item {
 	public MultiItem() {

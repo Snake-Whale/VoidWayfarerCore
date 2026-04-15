@@ -65,6 +65,8 @@ public class BlockAdvancedArcaneTable extends Block{
 					entityitem.motionZ = world.rand.nextGaussian() * f3;
 					world.spawnEntityInWorld(entityitem);
 				}
+				
+				
 			}
 			world.markBlockForUpdate(x, y, z);
 		}
