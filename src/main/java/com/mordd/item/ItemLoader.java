@@ -66,5 +66,6 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(35,"hafniumRichZirconia");
 		MultiItem.registerMultiItem(36,"zirconiumTetrachloride");
 		MultiItem.registerMultiItem(37,"hafniumTetrachloride");
+		MultiItem.registerMultiItem(38,"superconduct_mix");
 	}
 }

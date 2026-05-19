@@ -24,7 +24,6 @@ public class TileEntityFluidSource extends TileEntity implements IFluidHandler{
 	Fluid fluid = FluidRegistry.WATER;
 	public TileEntityFluidSource() {}
 	public TileEntityFluidSource(Fluid fluid) {
-
 		this.fluid = fluid;
 	}
 	public Fluid getFluid() {

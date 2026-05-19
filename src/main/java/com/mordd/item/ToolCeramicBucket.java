@@ -1,65 +1,16 @@
 package com.mordd.item;
 
-import gregapi.oredict.OreDictMaterial;
-
-
-import gregapi.GT_API;
-import gregapi.code.IItemContainer;
-import gregapi.cover.covers.CoverTextureCanvas;
 import gregapi.data.CS;
-import gregapi.data.IL;
 import gregapi.data.*;
-import gregapi.item.CreativeTab;
-import gregapi.item.IItemRottable;
-import gregapi.item.IPrefixItem;
-import gregapi.item.multiitem.MultiItem;
 import gregapi.item.multiitem.MultiItemRandom;
-import gregapi.item.multiitem.MultiItemRandomWithCompat;
 import gregapi.item.multiitem.behaviors.*;
-import gregapi.item.multiitem.energy.EnergyStat;
-import gregapi.item.multiitem.energy.EnergyStatDebug;
-import gregapi.old.Textures;
 import gregapi.oredict.OreDictItemData;
-import gregapi.render.BlockTextureDefault;
-import gregapi.util.CR;
-import gregapi.util.OM;
-import gregapi.util.UT;
 import gregtech.items.behaviors.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import gregapi.api.Abstract_Mod;
-import gregapi.block.BlockBase;
-import gregapi.block.IBlockBase;
-import gregapi.block.IBlockPlacable;
-import gregapi.block.IPrefixBlock;
-import gregapi.block.fluid.BlockBaseFluid;
 import gregapi.code.*;
-import gregapi.compat.buildcraft.ICompatBC;
-import gregapi.compat.computercraft.ICompatCC;
-import gregapi.compat.forestry.ICompatFR;
-import gregapi.compat.galacticraft.ICompatGC;
-import gregapi.compat.industrialcraft.ICompatIC2;
-import gregapi.compat.industrialcraft.ICompatIC2EUItem;
-import gregapi.compat.thaumcraft.ICompatTC;
-import gregapi.compat.warpdrive.ICompatWD;
-import gregapi.config.Config;
-import gregapi.dummies.DummyWorld;
-import gregapi.fluid.FluidTankGT;
-import gregapi.item.ItemArmorBase;
-import gregapi.item.multiitem.MultiItemTool;
-import gregapi.item.multiitem.food.IFoodStat;
-import gregapi.log.LogBuffer;
-import gregapi.network.INetworkHandler;
-import gregapi.oredict.OreDictMaterialStack;
-import gregapi.oredict.OreDictPrefix;
-import gregapi.recipes.Recipe;
-import gregapi.render.IIconContainer;
-import gregapi.render.ITexture;
-import gregapi.render.IconContainerCopied;
 import gregapi.util.ST;
-import gregapi.wooddict.PlankEntry;
-import gregapi.worldgen.WorldgenObject;
 
 import java.util.HashMap;
 

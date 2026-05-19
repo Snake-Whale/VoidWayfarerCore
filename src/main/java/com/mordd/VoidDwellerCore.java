@@ -17,6 +17,7 @@ import com.mordd.item.MultiItem;
 import com.mordd.tileentity.GT_TileEntityLoader;
 import com.mordd.tileentity.TileEntityLoader;
 import com.mordd.util.Utils;
+import com.mordd.api.RecipeHandler;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -31,6 +32,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;
+
 
 /**
  * @author mordd
@@ -111,11 +113,63 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 	public void onModPostInit2(cpw.mods.fml.common.event.FMLPostInitializationEvent aEvent) {
 		// Insert your PostInit Code here and not above
 		Item tile = GameRegistry.findItem("gregtech", "gt.multitileentity");
-		//Modified
-		//Utils.replaceMaterial(new ItemStack(tile,1,1039),MT.Ir,MT.NetherStar,1*CS.U);
-		Utils.clearMaterial(new ItemStack(tile,1,1039));
-		Utils.addMaterial(new ItemStack(tile,1,1039),MT.Ir,7*CS.U);
-		Utils.addMaterial(new ItemStack(tile,1,1039),MT.NetherStar,1*CS.U);
+		Item vd_tile = GameRegistry.findItem("vd_core", "vd.multitileentity");
+		// Material Modification (For GT)
+		Utils.addMaterial(new ItemStack(tile,1,1039),MT.NetherStar, CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,10087),MT.Graphene,9*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,10087),MT.Sapphire,2*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,10087),MT.Pt,2*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,10097),MT.Graphene,36*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,10097),MT.Sapphire,2*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,10097),MT.Pt,2*CS.U);
+		// Material Modification (For VD)
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.Magnalium,72*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.StainlessSteel,38*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.Invar,36*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.Rubber, 9*CS.U4);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.Cu,2*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.SteelGalvanized,3*CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.Sn,CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.IronMagnetic,CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.TritaniumAlloy,72*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.Ti,36*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.TungstenSteel,36*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.Cu,5*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.W, 9*CS.U4);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.Rubber, 2*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.Al, 3*CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17992),MT.SteelMagnetic, CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.Graphene,72*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.TungstenSteel,36*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.W,36*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.Cu,6*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.Ta4HfC5,9*CS.U4);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.Rubber,2*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.StainlessSteel,3*CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.Au,CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17993),MT.SteelMagnetic,CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.Ad,297*CS.U4);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.Vibramantium,72*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.AnnealedCopper,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.Rubber,2*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.Cr,3*CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.Al,CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17994),MT.NeodymiumMagnetic,CS.U2);
+		Utils.addMaterial(new ItemStack(vd_tile,1,17996),MT.Ad,36*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18000),MT.EnergiumRed,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18000),MT.Ti,16*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18000),MT.AnnealedCopper,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18000),MT.Fe,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18001),MT.EnergiumRed,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18001),MT.Ir,16*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18001),MT.AnnealedCopper,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18001),MT.Fe,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18002),MT.EnergiumRed,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18002),MT.Os,16*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18002),MT.AnnealedCopper,8*CS.U);
+		Utils.addMaterial(new ItemStack(vd_tile,1,18002),MT.Fe,8*CS.U);
+
+		RecipeHandler.defineExtendRecipe();
 	}
 	
 	@Override

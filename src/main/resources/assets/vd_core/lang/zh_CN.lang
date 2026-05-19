@@ -1,5 +1,6 @@
 vd_core.fluidsource.0.name=水框架
 vd_core.fluidsource.1.name=蒸馏水框架
+vd_core.fluidsource.2.name=空气框架
 vd_core.multiblock.stone_maker.name=RC造石机
 vd_core.multiblock.compressed_wood.name=压缩的原木
 vd_core.multiblock.rocky_wood.name=石化木
@@ -52,6 +53,7 @@ vd_core.multiitem.fertilizer.name=肥料
 vd_core.multiitem.potassiumAmmoniumHydrogenPhosphate.name=磷酸氢钾铵
 vd_core.multiitem.clay_bucket.name=粘土桶
 vd_core.multiitem.singleUseCrushHammer.name=一次性碎石锤
+vd_core.multiitem.superconduct_mix.name=超导基编织线缆
 vd_core.multiitem.magnesiumOxide.name=氧化镁粉
 vd_core.multiitem.eternity_crystal.name=永恒催化剂
 vd_core.multiitem.potassiumHeptafluorotantalate_crystal.name=氟钽酸钾结晶

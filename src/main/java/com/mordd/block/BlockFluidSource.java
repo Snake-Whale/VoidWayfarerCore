@@ -30,10 +30,12 @@ public class BlockFluidSource extends Block {
 	static {
 		allowedFluid.add(FluidRegistry.WATER);
 		allowedFluid.add(FL.DistW.fluid());
+		allowedFluid.add(FL.Air.fluid());
 	}
 	public BlockFluidSource() {
 		super(Material.ground);
 		this.setHardness(1.0f);
+		this.setHarvestLevel("wrench", 0);
 	}
 	@Override 
 	public void onBlockPreDestroy(World world, int x, int y, int z, int metaOld) {
