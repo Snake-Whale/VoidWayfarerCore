@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import gregapi.data.ANY;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -122,6 +123,11 @@ public final class VoidDwellerCore extends gregapi.api.Abstract_Mod {
 		Utils.addMaterial(new ItemStack(tile,1,10097),MT.Graphene,36*CS.U);
 		Utils.addMaterial(new ItemStack(tile,1,10097),MT.Sapphire,2*CS.U);
 		Utils.addMaterial(new ItemStack(tile,1,10097),MT.Pt,2*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,20251),MT.NetherStar, CS.U);
+		Utils.replaceMaterial(new ItemStack(tile,1,20251), ANY.Quartz,MT.Ir,7*CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,20252),MT.NetherStar, CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,20253),MT.NetherStar, CS.U);
+		Utils.addMaterial(new ItemStack(tile,1,20254),MT.NetherStar, CS.U);
 		// Material Modification (For VD)
 		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.Magnalium,72*CS.U);
 		Utils.addMaterial(new ItemStack(vd_tile,1,17991),MT.StainlessSteel,38*CS.U);

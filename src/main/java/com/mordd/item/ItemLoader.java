@@ -67,5 +67,8 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(36,"zirconiumTetrachloride");
 		MultiItem.registerMultiItem(37,"hafniumTetrachloride");
 		MultiItem.registerMultiItem(38,"superconduct_mix");
+		MultiItem.registerMultiItem(39,"berylliumSulfate");
+		MultiItem.registerMultiItem(40,"berylliumDichloride");
+		MultiItem.registerMultiItem(41,"beryllium_ether_compound");
 	}
 }

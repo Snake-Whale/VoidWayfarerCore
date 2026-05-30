@@ -22,6 +22,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -39,22 +40,82 @@ public class BlockFluidSource extends Block {
 	}
 	@Override 
 	public void onBlockPreDestroy(World world, int x, int y, int z, int metaOld) {
-		TileEntity tile = world.getTileEntity(x, y, z);
-		ItemStack stack;
-		if(tile instanceof TileEntityFluidSource) {
-			TileEntityFluidSource source  = (TileEntityFluidSource)tile;
-			int meta = allowedFluid.indexOf(source.getFluid());
-			stack = new ItemStack(this,1,meta >= 0 ? meta : 0);
+		EntityPlayer player = world.getClosestPlayer(x, y, z, 6D);
+		int meta = world.getBlockMetadata(x, y, z);
+
+		// 1.7.10正确的扳手挖掘判断（直接工具校验）
+		boolean isWrenchHarvest = false;
+		if (player != null && player.getHeldItem() != null) {
+			ItemStack heldStack = player.getHeldItem();
+			String requiredTool = this.getHarvestTool(meta); // 获取方块所需工具类型（"wrench"）
+			int requiredLevel = this.getHarvestLevel(meta); // 获取方块所需挖掘等级（0）
+
+			// 检查：工具类型匹配 + 挖掘等级足够 + 工具能挖掘该方块
+			if ("wrench".equals(requiredTool) &&
+					heldStack.getItem().getHarvestLevel(heldStack, requiredTool) >= requiredLevel &&
+					heldStack.getItem().canHarvestBlock(this, heldStack)) {
+				isWrenchHarvest = true;
+			}
 		}
-		else {
-			 stack = new ItemStack(this,1);
+
+		// 非扳手挖掘 → 正常掉落地面
+		if (player == null || !isWrenchHarvest) {
+			TileEntity tile = world.getTileEntity(x, y, z);
+			ItemStack stack;
+			if(tile instanceof TileEntityFluidSource) {
+				TileEntityFluidSource source  = (TileEntityFluidSource)tile;
+				int fluidMeta = allowedFluid.indexOf(source.getFluid());
+				stack = new ItemStack(this,1,fluidMeta >= 0 ? fluidMeta : 0);
+			} else {
+				stack = new ItemStack(this,1);
+			}
+			EntityItem entityitem = new EntityItem(world, x+0.5, y+0.5, z+0.5, stack);
+			double f3 = 0.05F;
+			entityitem.motionX = world.rand.nextGaussian() * f3;
+			entityitem.motionY = world.rand.nextGaussian() * f3;
+			entityitem.motionZ = world.rand.nextGaussian() * f3;
+			world.spawnEntityInWorld(entityitem);
 		}
-		EntityItem entityitem = new EntityItem(world, (double)x + 0.5d, (double)y + 0.5d, (double)z +0.5d, stack);
-		double f3 = 0.05F;
-		entityitem.motionX = world.rand.nextGaussian() * f3;
-		entityitem.motionY = world.rand.nextGaussian() * f3;
-		entityitem.motionZ = world.rand.nextGaussian() * f3;
-		world.spawnEntityInWorld(entityitem);
+	}
+	@Override
+	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z, boolean willHarvest) {
+		int meta = world.getBlockMetadata(x, y, z);
+		boolean isWrenchHarvest = false;
+
+		// 1.7.10正确的扳手挖掘判断（与onBlockPreDestroy保持一致）
+		if (player.getHeldItem() != null) {
+			ItemStack heldStack = player.getHeldItem();
+			String requiredTool = this.getHarvestTool(meta);
+			int requiredLevel = this.getHarvestLevel(meta);
+
+			if ("wrench".equals(requiredTool) &&
+					heldStack.getItem().getHarvestLevel(heldStack, requiredTool) >= requiredLevel &&
+					heldStack.getItem().canHarvestBlock(this, heldStack)) {
+				isWrenchHarvest = true;
+			}
+		}
+
+		// 仅扳手合规挖掘 → 物品直接进背包
+		if (!world.isRemote && willHarvest && isWrenchHarvest) {
+			TileEntity tile = world.getTileEntity(x, y, z);
+			ItemStack stack;
+			if(tile instanceof TileEntityFluidSource) {
+				TileEntityFluidSource source = (TileEntityFluidSource)tile;
+				int fluidMeta = allowedFluid.indexOf(source.getFluid());
+				stack = new ItemStack(this, 1, fluidMeta >= 0 ? fluidMeta : 0);
+			} else {
+				stack = new ItemStack(this, 1);
+			}
+			if (!player.inventory.addItemStackToInventory(stack)) {
+				EntityItem entityitem = new EntityItem(world, x+0.5, y+0.5, z+0.5, stack);
+				double f3 = 0.05F;
+				entityitem.motionX = world.rand.nextGaussian() * f3;
+				entityitem.motionY = world.rand.nextGaussian() * f3;
+				entityitem.motionZ = world.rand.nextGaussian() * f3;
+				world.spawnEntityInWorld(entityitem);
+			}
+		}
+		return super.removedByPlayer(world, player, x, y, z, willHarvest);
 	}
 	@Override
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune){
