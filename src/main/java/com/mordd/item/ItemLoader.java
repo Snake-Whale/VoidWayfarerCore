@@ -45,9 +45,9 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(12,"triethylaluminium");
 		MultiItem.registerMultiItem(13,"triisopropylaluminium");
 		MultiItem.registerMultiItem(14,"rawRubber");
-		MultiItem.registerMultiItem(15,"sodiumBeryllate");
-		MultiItem.registerMultiItem(16,"berylliumHydroxide");
-		MultiItem.registerMultiItem(17,"emerald_mix");
+		//MultiItem.registerMultiItem(15,"sodiumBeryllate");
+		//MultiItem.registerMultiItem(16,"berylliumHydroxide");
+		//MultiItem.registerMultiItem(17,"emerald_mix");
 		MultiItem.registerMultiItem(20,"crushed_flux_coagulum_limestone");
 		MultiItem.registerMultiItem(21,"crushed_flux_coagulum_marble");
 		MultiItem.registerMultiItem(22,"crushed_flux_coagulum_diorite");

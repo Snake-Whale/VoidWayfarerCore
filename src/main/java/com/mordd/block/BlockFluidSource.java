@@ -43,14 +43,12 @@ public class BlockFluidSource extends Block {
 		EntityPlayer player = world.getClosestPlayer(x, y, z, 6D);
 		int meta = world.getBlockMetadata(x, y, z);
 
-		// 1.7.10正确的扳手挖掘判断（直接工具校验）
 		boolean isWrenchHarvest = false;
 		if (player != null && player.getHeldItem() != null) {
 			ItemStack heldStack = player.getHeldItem();
-			String requiredTool = this.getHarvestTool(meta); // 获取方块所需工具类型（"wrench"）
-			int requiredLevel = this.getHarvestLevel(meta); // 获取方块所需挖掘等级（0）
+			String requiredTool = this.getHarvestTool(meta);
+			int requiredLevel = this.getHarvestLevel(meta);
 
-			// 检查：工具类型匹配 + 挖掘等级足够 + 工具能挖掘该方块
 			if ("wrench".equals(requiredTool) &&
 					heldStack.getItem().getHarvestLevel(heldStack, requiredTool) >= requiredLevel &&
 					heldStack.getItem().canHarvestBlock(this, heldStack)) {
@@ -58,7 +56,6 @@ public class BlockFluidSource extends Block {
 			}
 		}
 
-		// 非扳手挖掘 → 正常掉落地面
 		if (player == null || !isWrenchHarvest) {
 			TileEntity tile = world.getTileEntity(x, y, z);
 			ItemStack stack;
@@ -82,7 +79,6 @@ public class BlockFluidSource extends Block {
 		int meta = world.getBlockMetadata(x, y, z);
 		boolean isWrenchHarvest = false;
 
-		// 1.7.10正确的扳手挖掘判断（与onBlockPreDestroy保持一致）
 		if (player.getHeldItem() != null) {
 			ItemStack heldStack = player.getHeldItem();
 			String requiredTool = this.getHarvestTool(meta);
@@ -95,7 +91,6 @@ public class BlockFluidSource extends Block {
 			}
 		}
 
-		// 仅扳手合规挖掘 → 物品直接进背包
 		if (!world.isRemote && willHarvest && isWrenchHarvest) {
 			TileEntity tile = world.getTileEntity(x, y, z);
 			ItemStack stack;
