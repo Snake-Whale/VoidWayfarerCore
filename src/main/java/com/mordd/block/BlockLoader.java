@@ -56,7 +56,8 @@ public class BlockLoader {
 		MultiBlock.registerMultiBlock(164, "compressed_flux_mixture_kimberlite");
 		
 		MultiBlock.registerMultiBlock(184, "hot_flux_mixture_kimberlite",0.5f);
-		
+
+		MultiBlock.registerMultiBlock(200, "granite_frame");
 		MultiBlock.registerMultiBlock(201, "marble_frame");
 		MultiBlock.registerMultiBlock(202, "limestone_frame");
 		MultiBlock.registerMultiBlock(203, "basalt_frame");
@@ -70,7 +71,8 @@ public class BlockLoader {
 		MultiBlock.registerMultiBlock(211, "coal_frame");
 		MultiBlock.registerMultiBlock(212, "granite_red_frame");
 		MultiBlock.registerMultiBlock(213, "granite_black_frame");
-		
+
+		MultiBlock.registerMultiBlock(220, "flux_coagulum_granite");
 		MultiBlock.registerMultiBlock(221, "flux_coagulum_marble");
 		MultiBlock.registerMultiBlock(222, "flux_coagulum_limestone");
 		MultiBlock.registerMultiBlock(223, "flux_coagulum_basalt");

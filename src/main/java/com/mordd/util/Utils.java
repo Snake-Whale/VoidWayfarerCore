@@ -28,8 +28,8 @@ public class Utils {
 	public static List<Aspect> primalAspects;
 	public static Map<Integer,ItemStack> rc_recipe = new HashMap<Integer,ItemStack>();
 	static{
-		
-		
+
+		rc_recipe.put(200,new ItemStack(BlocksGT.Granite,1,1));
 		rc_recipe.put(201,new ItemStack(BlocksGT.Marble,1,1));
 		rc_recipe.put(202,new ItemStack(BlocksGT.Limestone,1,1));
 		rc_recipe.put(203,new ItemStack(BlocksGT.Basalt,1,1));

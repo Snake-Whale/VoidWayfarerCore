@@ -45,9 +45,8 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(12,"triethylaluminium");
 		MultiItem.registerMultiItem(13,"triisopropylaluminium");
 		MultiItem.registerMultiItem(14,"rawRubber");
-		//MultiItem.registerMultiItem(15,"sodiumBeryllate");
-		//MultiItem.registerMultiItem(16,"berylliumHydroxide");
-		//MultiItem.registerMultiItem(17,"emerald_mix");
+
+		MultiItem.registerMultiItem(19,"crushed_flux_coagulum_granite");
 		MultiItem.registerMultiItem(20,"crushed_flux_coagulum_limestone");
 		MultiItem.registerMultiItem(21,"crushed_flux_coagulum_marble");
 		MultiItem.registerMultiItem(22,"crushed_flux_coagulum_diorite");
@@ -58,6 +57,7 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(27,"crushed_flux_coagulum_andesite");
 		MultiItem.registerMultiItem(28,"crushed_flux_coagulum_granite_red");
 		MultiItem.registerMultiItem(29,"crushed_flux_coagulum_granite_black");
+
 		MultiItem.registerMultiItem(30,"roastedPlatinumGroupSludge");
 		MultiItem.registerMultiItem(31,"rareMetalResidue");
 		MultiItem.registerMultiItem(32,"iridiumDioxide");
@@ -70,5 +70,9 @@ public class ItemLoader {
 		MultiItem.registerMultiItem(39,"berylliumSulfate");
 		MultiItem.registerMultiItem(40,"berylliumDichloride");
 		MultiItem.registerMultiItem(41,"beryllium_ether_compound");
+		MultiItem.registerMultiItem(42,"manganeseHydroxide");
+		MultiItem.registerMultiItem(43,"sodiumTungstate");
+
+		MultiItem.registerMultiItem(100,"electromagnetic_relay");
 	}
 }
